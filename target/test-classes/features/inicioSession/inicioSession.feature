@@ -1,4 +1,3 @@
-# language: es
 @InicioSession
 Feature: Inicio de Sesión - Saucedemo
   Como usuario de Saucedemo

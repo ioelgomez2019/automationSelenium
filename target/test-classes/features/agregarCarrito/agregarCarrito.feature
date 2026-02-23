@@ -1,4 +1,3 @@
-# language: es
 @AgregarCarrito
 Feature: Agregar Producto al Carrito
   Como usuario del sistema
