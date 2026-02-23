@@ -1,7 +1,7 @@
 package com.automation.script.config;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -14,8 +14,8 @@ public class ConfigManager {
     private static ConfigManager instance;
     private Properties properties;
 
-    // Ruta relativa al archivo de configuración
-    private static final String CONFIG_PATH = "Script/Config/environment.config";
+    // Ruta relativa al archivo de configuración en resources
+    private static final String CONFIG_PATH = "/config/environment.config";
 
     // ──────────────────────────────────────────────
     //  Singleton: privado para forzar uso de getInstance()
@@ -36,8 +36,11 @@ public class ConfigManager {
     //  Carga del archivo .config
     // ──────────────────────────────────────────────
     private void cargarPropiedades() {
-        try (FileInputStream fis = new FileInputStream(CONFIG_PATH)) {
-            properties.load(fis);
+        try (InputStream is = getClass().getResourceAsStream(CONFIG_PATH)) {
+            if (is == null) {
+                throw new RuntimeException("❌ Archivo de configuración no encontrado: " + CONFIG_PATH);
+            }
+            properties.load(is);
             System.out.println("✅ Configuración cargada: " + CONFIG_PATH);
         } catch (IOException e) {
             throw new RuntimeException("❌ No se pudo cargar el archivo de configuración: " + CONFIG_PATH, e);

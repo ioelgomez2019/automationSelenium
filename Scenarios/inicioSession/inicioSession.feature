@@ -1,30 +1,45 @@
 # language: es
 @InicioSession
-Feature: Inicio de Sesión
-  Como usuario del sistema Corebank
+Feature: Inicio de Sesión - Saucedemo
+  Como usuario de Saucedemo
   Quiero poder iniciar sesión con mis credenciales
-  Para acceder a las funcionalidades del sistema
+  Para acceder a la tienda online
 
   Background:
     Given que el usuario abre el navegador y accede al sistema
 
-  @LoginExitoso
-  Scenario: Inicio de sesión exitoso con credenciales válidas
-    When el usuario ingresa el correo "admin@corebank.com"
-    And el usuario ingresa la contraseña "Admin123*"
+  @LoginExitoso @SauceDemo
+  Scenario: Inicio de sesión exitoso con standard_user
+    When el usuario ingresa el correo "standard_user"
+    And el usuario ingresa la contraseña "secret_sauce"
     And el usuario hace clic en el botón "Ingresar"
     Then el usuario debe ver el dashboard principal
-    And el mensaje de bienvenida debe contener "Bienvenido"
+    And el mensaje de bienvenida debe contener "Swag Labs"
 
-  @LoginFallido
-  Scenario: Inicio de sesión fallido con credenciales incorrectas
-    When el usuario ingresa el correo "usuario@invalido.com"
-    And el usuario ingresa la contraseña "ClaveIncorrecta"
+  @LoginExitoso @SauceDemo
+  Scenario: Inicio de sesión exitoso con performance_glitch_user
+    When el usuario ingresa el correo "performance_glitch_user"
+    And el usuario ingresa la contraseña "secret_sauce"
     And el usuario hace clic en el botón "Ingresar"
-    Then el sistema debe mostrar el mensaje de error "Credenciales inválidas"
+    Then el usuario debe ver el dashboard principal
+    And el mensaje de bienvenida debe contener "Swag Labs"
 
-  @LoginCamposVacios
-  Scenario: Inicio de sesión con campos vacíos
+  @LoginFallido @SauceDemo
+  Scenario: Inicio de sesión fallido con locked_out_user
+    When el usuario ingresa el correo "locked_out_user"
+    And el usuario ingresa la contraseña "secret_sauce"
+    And el usuario hace clic en el botón "Ingresar"
+    Then el sistema debe mostrar el mensaje de error "locked out"
+
+  @LoginFallido @SauceDemo
+  Scenario: Inicio de sesión fallido con credenciales incorrectas
+    When el usuario ingresa el correo "usuario_invalido"
+    And el usuario ingresa la contraseña "password_incorrecta"
+    And el usuario hace clic en el botón "Ingresar"
+    Then el sistema debe mostrar el mensaje de error "do not match"
+
+  @LoginCamposVacios @SauceDemo
+  Scenario: Inicio de sesión con campo de usuario vacío
     When el usuario no ingresa ningún dato
     And el usuario hace clic en el botón "Ingresar"
-    Then el sistema debe mostrar validaciones de campos requeridos
+    Then el sistema debe mostrar el mensaje de error "Username is required"

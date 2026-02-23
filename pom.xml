@@ -62,7 +62,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
-            <scope>test</scope>
+            <!-- <scope>test</scope> -->
         </dependency>
 
         <!-- ===== LOGGING ===== -->
@@ -95,6 +95,10 @@
     </dependencies>
 
     <build>
+        <!-- ===== CONFIGURACIÓN DE DIRECTORIOS FUENTE ===== -->
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        
         <plugins>
 
             <!-- ===== MAVEN SUREFIRE PLUGIN (ejecutar tests) ===== -->

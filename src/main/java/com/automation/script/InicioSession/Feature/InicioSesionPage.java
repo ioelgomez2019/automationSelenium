@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 /**
  * InicioSesionPage - Page Object de la página de Login.
- * Contiene todos los elementos mapeados de la pantalla de inicio de sesión.
+ * Contiene todos los elementos mapeados de la pantalla de inicio de sesión (Saucedemo).
  * Hereda métodos base de BasePage.
  */
 public class InicioSesionPage extends BasePage {
@@ -15,34 +15,34 @@ public class InicioSesionPage extends BasePage {
     //  Localizadores / Elementos de la página
     // ──────────────────────────────────────────────
 
-    // ------ Formulario de Login ------
-    @FindBy(id = "email")
+    // ------ Formulario de Login - SAUCEDEMO ------
+    @FindBy(id = "user-name")
     private WebElement inputEmail;
 
     @FindBy(id = "password")
     private WebElement inputPassword;
 
-    @FindBy(xpath = "//button[@type='submit' and contains(text(),'Ingresar')]")
+    @FindBy(id = "login-button")
     private WebElement btnIngresar;
 
-    @FindBy(xpath = "//button[contains(text(),'Ingresar')]")
+    @FindBy(xpath = "//input[@id='login-button']")
     private WebElement btnIngresarAlternativo;
 
-    // ------ Mensajes ------
-    @FindBy(css = ".error-message, .alert-danger, [class*='error']")
+    // ------ Mensajes - SAUCEDEMO ------
+    @FindBy(css = "h3[data-test='error']")
     private WebElement lblMensajeError;
 
-    @FindBy(css = "[class*='validation'], [class*='required']")
+    @FindBy(xpath = "//h3[@data-test='error']")
     private WebElement lblValidacionCampos;
 
-    // ------ Dashboard (post login) ------
-    @FindBy(css = ".dashboard, [class*='dashboard'], [id*='dashboard']")
+    // ------ Dashboard (post login) - SAUCEDEMO ------
+    @FindBy(css = ".inventory_list")
     private WebElement seccionDashboard;
 
-    @FindBy(css = ".welcome-message, [class*='welcome'], h1.greeting")
+    @FindBy(css = ".app_logo")
     private WebElement lblBienvenida;
 
-    @FindBy(css = "nav, .sidebar, .menu-principal")
+    @FindBy(css = ".bm-burger-button, #react-burger-menu-btn")
     private WebElement menuPrincipal;
 
     // ──────────────────────────────────────────────
