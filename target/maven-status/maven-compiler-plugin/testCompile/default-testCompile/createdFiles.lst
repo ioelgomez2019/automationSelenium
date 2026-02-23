@@ -1,0 +1,3 @@
+runners\TestRunner.class
+com\automation\script\AgregarCarrito\Feature\AgregarCarritoStep.class
+com\automation\script\InicioSession\Feature\InicioSessionStep.class
