@@ -8,18 +8,12 @@ Feature: Inicio de Sesión - Saucedemo
     Given que el usuario abre el navegador y accede al sistema
 
   @LoginExitoso @SauceDemo
-  Scenario Outline: Inicio de sesión exitoso con standard_user
-    When el usuario ingresa el correo "<usuario>"
-    And el usuario ingresa la contraseña "<pasword>"
-    And el usuario hace clic en el botón ingresar
+  Scenario: Inicio de sesión exitoso con standard_user
+    When el usuario ingresa el correo "standard_user"
+    And el usuario ingresa la contraseña "secret_sauce"
+    And el usuario hace clic en el botón "Ingresar"
     Then el usuario debe ver el dashboard principal
-    And el mensaje de bienvenida debe contener "<mensaje>"
-
-    @funcional
-    Examples:
-      | usuario          | pasword             | mensaje      |
-      | locked_out_user  | secret_sauce        | locked out   |
-      | usuario_invalido | password_incorrecta | do not match |
+    And el mensaje de bienvenida debe contener "Swag Labs"
 
   @LoginExitoso @SauceDemo
   Scenario: Inicio de sesión exitoso con performance_glitch_user
@@ -48,3 +42,4 @@ Feature: Inicio de Sesión - Saucedemo
     When el usuario no ingresa ningún dato
     And el usuario hace clic en el botón "Ingresar"
     Then el sistema debe mostrar el mensaje de error "Username is required"
+

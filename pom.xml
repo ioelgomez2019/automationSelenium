@@ -109,13 +109,21 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <!-- Incluir Las clases de test que extienden AbstractTestNGCucumberTests -->
+                    <includes>
+                        <include>**/runners/*Runner.class</include>
+                    </includes>
                     <!-- Para ver logs en consola -->
                     <useFile>false</useFile>
                     <redirectTestOutputToFile>false</redirectTestOutputToFile>
+                    <trimStackTrace>false</trimStackTrace>
                     <!-- Propiedades del sistema para tags de Cucumber -->
                     <systemPropertyVariables>
                         <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
                     </systemPropertyVariables>
+                    <!-- Propiedades de paralelización -->
+                    <parallel>false</parallel>
+                    <threadCount>1</threadCount>
                 </configuration>
             </plugin>
 

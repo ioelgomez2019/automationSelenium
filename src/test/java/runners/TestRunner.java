@@ -6,7 +6,9 @@ import org.testng.annotations.DataProvider;
 
 /**
  * TestRunner - Main runner executing all tests.
- * Usage: mvn test OR mvn test -Dtest=TestRunner
+ * Usage: mvn test
+ *        mvn test -Dtest=TestRunner
+ *        ejecutar-pruebas.bat all
  */
 @CucumberOptions(
     features = {"Scenarios"},
@@ -17,7 +19,9 @@ import org.testng.annotations.DataProvider;
         "json:target/reports/full-report.json",
         "junit:target/reports/full-junit.xml"
     },
-    monochrome = true
+    monochrome = true,
+    dryRun = false,
+    publish = false
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 

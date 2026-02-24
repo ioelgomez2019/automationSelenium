@@ -73,6 +73,14 @@ public class ProductBusiness {
         productsPage.continueShopping();
     }
 
+    /**
+     * Validate cart is empty
+     */
+    public void validateCartEmpty() {
+        int cartCount = getCartCount();
+        Assert.assertEquals(cartCount, 0, "Cart should be empty but has " + cartCount + " item(s)");
+    }
+
     // Backward compatibility
     public void seleccionarProducto(String productName) {
         addProductToCart(productName);

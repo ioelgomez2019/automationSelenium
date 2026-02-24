@@ -6,26 +6,26 @@ Feature: Agregar Producto al Carrito
 
   Background:
     Given que el usuario abre el navegador y accede al sistema
-    Given que el usuario está autenticado en el sistema
-    And que el usuario se encuentra en la página de productos
+    And que el usuario está autenticado en el sistema
 
-  @AgregarProductoExitoso
+  @AgregarProductoExitoso @Order_1
   Scenario: Agregar un producto al carrito correctamente
-    When el usuario selecciona el producto "Laptop Dell XPS 15"
-    And el usuario hace clic en "Agregar al Carrito"
-    Then el carrito debe mostrar "1" producto
-    And el producto "Laptop Dell XPS 15" debe aparecer en el carrito
+    # Fresh login - carrito must be empty at start
+    When el usuario selecciona el producto "Sauce Labs Backpack"
+    And el usuario hace clic en agregar al carrito
+    Then el carrito debe mostrar 1 producto
 
-  @AgregarMultiplesProductos
+  @AgregarMultiplesProductos @Order_2
   Scenario: Agregar múltiples productos al carrito
-    When el usuario selecciona el producto "Laptop Dell XPS 15"
-    And el usuario hace clic en "Agregar al Carrito"
-    And el usuario selecciona el producto "Mouse Logitech MX"
-    And el usuario hace clic en "Agregar al Carrito"
-    Then el carrito debe mostrar "2" productos
+    When el usuario selecciona el producto "Sauce Labs Backpack"
+    And el usuario hace clic en agregar al carrito
+    And el usuario selecciona el producto "Sauce Labs Bike Light"
+    And el usuario hace clic en agregar al carrito
+    Then el carrito debe mostrar 2 productos
 
-  @EliminarProductoCarrito
+  @EliminarProductoCarrito @Order_3
   Scenario: Eliminar un producto del carrito
-    Given que el carrito tiene el producto "Laptop Dell XPS 15"
-    When el usuario elimina el producto "Laptop Dell XPS 15" del carrito
+    Given que el carrito tiene el producto "Sauce Labs Backpack"
+    When el usuario elimina el producto "Sauce Labs Backpack" del carrito
     Then el carrito debe estar vacío
+

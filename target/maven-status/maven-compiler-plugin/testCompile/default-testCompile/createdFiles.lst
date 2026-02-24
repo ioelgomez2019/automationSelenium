@@ -11,4 +11,5 @@ runners\E2ERunner.class
 com\automation\core\DriverManager.class
 com\automation\pages\ProductsPage.class
 com\automation\business\LoginBusiness.class
+com\automation\stepdefinitions\Hooks.class
 com\automation\stepdefinitions\CommonSteps.class

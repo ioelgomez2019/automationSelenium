@@ -8,6 +8,7 @@ import org.testng.annotations.DataProvider;
  * E2ERunner - Executes End-to-End workflows that combine login + product operations.
  * Demonstrates reusable LoginBusiness across multiple scenarios.
  * Usage: mvn test -Dtest=E2ERunner
+ *        ejecutar-pruebas.bat e2e
  */
 @CucumberOptions(
     features = {"Scenarios/inicioSession", "Scenarios/agregarCarrito"},
@@ -19,7 +20,9 @@ import org.testng.annotations.DataProvider;
         "junit:target/reports/e2e-junit.xml"
     },
     tags = "@login or @AgregarCarrito",
-    monochrome = true
+    monochrome = true,
+    dryRun = false,
+    publish = false
 )
 public class E2ERunner extends AbstractTestNGCucumberTests {
 

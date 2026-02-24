@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 /**
  * LoginRunner - Executes only @login tagged scenarios.
  * Usage: mvn test -Dtest=LoginRunner
+ *        ejecutar-pruebas.bat login
  */
 @CucumberOptions(
     features = "Scenarios/inicioSession",
@@ -18,7 +19,9 @@ import org.testng.annotations.DataProvider;
         "junit:target/reports/login-junit.xml"
     },
     tags = "@login",
-    monochrome = true
+    monochrome = true,
+    dryRun = false,
+    publish = false
 )
 public class LoginRunner extends AbstractTestNGCucumberTests {
 

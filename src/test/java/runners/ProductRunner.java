@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 /**
  * ProductRunner - Executes product/shopping cart scenarios.
  * Usage: mvn test -Dtest=ProductRunner
+ *        ejecutar-pruebas.bat product
  */
 @CucumberOptions(
     features = "Scenarios/agregarCarrito",
@@ -18,7 +19,9 @@ import org.testng.annotations.DataProvider;
         "junit:target/reports/product-junit.xml"
     },
     tags = "@AgregarCarrito",
-    monochrome = true
+    monochrome = true,
+    dryRun = false,
+    publish = false
 )
 public class ProductRunner extends AbstractTestNGCucumberTests {
 

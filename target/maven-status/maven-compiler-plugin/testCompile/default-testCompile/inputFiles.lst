@@ -7,6 +7,7 @@ J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\step
 J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\runners\TestRunner.java
 J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\business\ProductBusiness.java
 J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\pages\ProductsPage.java
+J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\stepdefinitions\Hooks.java
 J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\config\ConfigManager.java
 J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\pages\LoginPage.java
 J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\runners\E2ERunner.java
