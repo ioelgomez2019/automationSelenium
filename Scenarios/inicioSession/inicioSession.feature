@@ -1,4 +1,4 @@
-@InicioSession
+@InicioSession @login
 Feature: Inicio de Sesión - Saucedemo
   Como usuario de Saucedemo
   Quiero poder iniciar sesión con mis credenciales

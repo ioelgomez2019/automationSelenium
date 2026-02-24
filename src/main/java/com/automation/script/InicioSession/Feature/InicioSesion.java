@@ -2,7 +2,7 @@ package com.automation.script.InicioSession.Feature;
 
 import com.automation.script.componentes.DriverManager;
 import com.automation.script.config.ConfigManager;
-import org.junit.Assert;
+import org.testng.Assert;
 
 /**
  * InicioSesion - Lógica de negocio del módulo de Inicio de Sesión.
@@ -71,8 +71,8 @@ public class InicioSesion {
 
     public void validarLoginExitoso() {
         Assert.assertTrue(
-            "❌ El dashboard no es visible tras el login.",
-            page.dashboardEsVisible() || page.menuPrincipalEsVisible()
+            page.dashboardEsVisible() || page.menuPrincipalEsVisible(),
+            "❌ El dashboard no es visible tras el login."
         );
         System.out.println("✅ Login exitoso - Dashboard visible.");
     }
@@ -80,8 +80,8 @@ public class InicioSesion {
     public void validarMensajeBienvenida(String textoParcial) {
         String textoReal = page.obtenerTextoBienvenida();
         Assert.assertTrue(
-            "❌ El mensaje de bienvenida no contiene: " + textoParcial + " | Texto real: " + textoReal,
-            textoReal.toLowerCase().contains(textoParcial.toLowerCase())
+            textoReal.toLowerCase().contains(textoParcial.toLowerCase()),
+            "❌ El mensaje de bienvenida no contiene: " + textoParcial + " | Texto real: " + textoReal
         );
         System.out.println("✅ Bienvenida correcta: " + textoReal);
     }
@@ -89,16 +89,16 @@ public class InicioSesion {
     public void validarMensajeError(String mensajeEsperado) {
         String mensajeReal = page.obtenerMensajeError();
         Assert.assertTrue(
-            "❌ El mensaje de error no contiene: " + mensajeEsperado + " | Mensaje real: " + mensajeReal,
-            mensajeReal.toLowerCase().contains(mensajeEsperado.toLowerCase())
+            mensajeReal.toLowerCase().contains(mensajeEsperado.toLowerCase()),
+            "❌ El mensaje de error no contiene: " + mensajeEsperado + " | Mensaje real: " + mensajeReal
         );
         System.out.println("✅ Mensaje de error correcto: " + mensajeReal);
     }
 
     public void validarCamposRequeridos() {
         Assert.assertTrue(
-            "❌ No se mostraron mensajes de validación en campos requeridos.",
-            page.mensajeValidacionEsVisible()
+            page.mensajeValidacionEsVisible(),
+            "❌ No se mostraron mensajes de validación en campos requeridos."
         );
         System.out.println("✅ Validaciones de campos requeridos visibles.");
     }

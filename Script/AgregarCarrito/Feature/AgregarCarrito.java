@@ -1,7 +1,7 @@
 package com.automation.script.AgregarCarrito.Feature;
 
 import com.automation.script.InicioSession.Feature.InicioSesion;
-import org.junit.Assert;
+import org.testng.Assert;
 
 /**
  * AgregarCarrito - Lógica de negocio del módulo Carrito de Compras.
@@ -54,24 +54,24 @@ public class AgregarCarrito {
     public void validarCantidadProductosEnCarrito(String cantidadEsperada) {
         String cantidadReal = page.obtenerContadorCarrito();
         Assert.assertEquals(
-            "❌ La cantidad en el carrito no coincide. Esperado: " + cantidadEsperada + " | Real: " + cantidadReal,
-            cantidadEsperada, cantidadReal
+            cantidadReal, cantidadEsperada,
+            "❌ La cantidad en el carrito no coincide. Esperado: " + cantidadEsperada + " | Real: " + cantidadReal
         );
         System.out.println("✅ Carrito con " + cantidadReal + " producto(s).");
     }
 
     public void validarProductoEnCarrito(String nombreProducto) {
         Assert.assertTrue(
-            "❌ El producto '" + nombreProducto + "' no se encontró en el carrito.",
-            page.productoEstaEnCarrito(nombreProducto)
+            page.productoEstaEnCarrito(nombreProducto),
+            "❌ El producto '" + nombreProducto + "' no se encontró en el carrito."
         );
         System.out.println("✅ Producto encontrado en carrito: " + nombreProducto);
     }
 
     public void validarCarritoVacio() {
         Assert.assertTrue(
-            "❌ El carrito no está vacío.",
-            page.carritoEstaVacio()
+            page.carritoEstaVacio(),
+            "❌ El carrito no está vacío."
         );
         System.out.println("✅ Carrito vacío confirmado.");
     }
