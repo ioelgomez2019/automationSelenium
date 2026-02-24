@@ -5,6 +5,7 @@ Feature: Agregar Producto al Carrito
   Para poder realizar una compra
 
   Background:
+    Given que el usuario abre el navegador y accede al sistema
     Given que el usuario está autenticado en el sistema
     And que el usuario se encuentra en la página de productos
 

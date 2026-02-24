@@ -5,22 +5,22 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 /**
- * LoginRunner - Executes only @login tagged scenarios.
- * Usage: mvn test -Dtest=LoginRunner
+ * ProductRunner - Executes product/shopping cart scenarios.
+ * Usage: mvn test -Dtest=ProductRunner
  */
 @CucumberOptions(
-    features = "Scenarios/inicioSession",
+    features = "Scenarios/agregarCarrito",
     glue = {"com.automation.stepdefinitions"},
     plugin = {
         "pretty",
-        "html:target/reports/login-report.html",
-        "json:target/reports/login-report.json",
-        "junit:target/reports/login-junit.xml"
+        "html:target/reports/product-report.html",
+        "json:target/reports/product-report.json",
+        "junit:target/reports/product-junit.xml"
     },
-    tags = "@login",
+    tags = "@AgregarCarrito",
     monochrome = true
 )
-public class LoginRunner extends AbstractTestNGCucumberTests {
+public class ProductRunner extends AbstractTestNGCucumberTests {
 
     @Override
     @DataProvider(parallel = false)

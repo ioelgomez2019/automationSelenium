@@ -1,8 +1,0 @@
-com\automation\business\login\LoginBusiness.class
-com\automation\core\DriverManager.class
-com\automation\core\ScreenshotUtil.class
-com\automation\pages\carrito\CarritoPage.class
-com\automation\pages\login\LoginPage.class
-com\automation\core\BasePage.class
-com\automation\business\carrito\CarritoBusiness.class
-com\automation\config\ConfigManager.class
