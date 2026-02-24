@@ -1,0 +1,109 @@
+package com.automation.business.login;
+
+import com.automation.core.DriverManager;
+import com.automation.config.ConfigManager;
+import com.automation.pages.login.LoginPage;
+import org.testng.Assert;
+
+/**
+ * LoginBusiness - Lógica de negocio del módulo de Inicio de Sesión.
+ * Orquesta las acciones de la página y aplica las validaciones del negocio.
+ * Actúa como capa intermedia entre los Step Definitions y el Page Object.
+ * 
+ * Arquitectura: Business Logic Layer (Login Module)
+ * Responsabilidad: Flujos de negocio y validaciones
+ */
+public class LoginBusiness {
+
+    private LoginPage page;
+    private ConfigManager config;
+
+    // ──────────────────────────────────────────────
+    //  Constructor
+    // ──────────────────────────────────────────────
+
+    public LoginBusiness() {
+        this.page   = new LoginPage();
+        this.config = ConfigManager.getInstance();
+    }
+
+    // ──────────────────────────────────────────────
+    //  Flujo: Navegar al sistema
+    // ──────────────────────────────────────────────
+
+    public void abrirPaginaLogin() {
+        DriverManager.navegarAlAmbiente();
+        System.out.println("🌐 Página de login abierta.");
+    }
+
+    // ──────────────────────────────────────────────
+    //  Flujo: Login completo (usa credenciales del config)
+    // ──────────────────────────────────────────────
+
+    public void realizarLoginConCredencialesDelAmbiente() {
+        String usuario     = config.getUsuario();
+        String contrasena  = config.getContrasena();
+        realizarLogin(usuario, contrasena);
+    }
+
+    public void realizarLogin(String email, String contrasena) {
+        page.ingresarEmail(email);
+        page.ingresarContrasena(contrasena);
+        page.clickBotonIngresar();
+        System.out.println("🔑 Login ejecutado para: " + email);
+    }
+
+    // ──────────────────────────────────────────────
+    //  Flujo: Solo ingresar campos (sin submit)
+    // ──────────────────────────────────────────────
+
+    public void ingresarEmail(String email) {
+        page.ingresarEmail(email);
+    }
+
+    public void ingresarContrasena(String contrasena) {
+        page.ingresarContrasena(contrasena);
+    }
+
+    public void clickBotonIngresar() {
+        page.clickBotonIngresar();
+    }
+
+    // ──────────────────────────────────────────────
+    //  Validaciones de Negocio
+    // ──────────────────────────────────────────────
+
+    public void validarLoginExitoso() {
+        Assert.assertTrue(
+            page.dashboardEsVisible() || page.menuPrincipalEsVisible(),
+            "❌ El dashboard no es visible tras el login."
+        );
+        System.out.println("✅ Login exitoso - Dashboard visible.");
+    }
+
+    public void validarMensajeBienvenida(String textoParcial) {
+        String textoReal = page.obtenerTextoBienvenida();
+        Assert.assertTrue(
+            textoReal.toLowerCase().contains(textoParcial.toLowerCase()),
+            "❌ El mensaje de bienvenida no contiene: " + textoParcial + " | Texto real: " + textoReal
+        );
+        System.out.println("✅ Bienvenida correcta: " + textoReal);
+    }
+
+    public void validarMensajeError(String mensajeEsperado) {
+        String mensajeReal = page.obtenerMensajeError();
+        Assert.assertTrue(
+            mensajeReal.toLowerCase().contains(mensajeEsperado.toLowerCase()),
+            "❌ El mensaje de error no contiene: " + mensajeEsperado + " | Mensaje real: " + mensajeReal
+        );
+        System.out.println("✅ Mensaje de error correcto: " + mensajeReal);
+    }
+
+    public void validarCamposRequeridos() {
+        Assert.assertTrue(
+            page.mensajeValidacionEsVisible(),
+            "❌ No se mostraron mensajes de validación en campos requeridos."
+        );
+        System.out.println("✅ Validaciones de campos requeridos visibles.");
+    }
+}

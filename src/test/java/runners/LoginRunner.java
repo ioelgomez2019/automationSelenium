@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
  */
 @CucumberOptions(
     features = "Scenarios/inicioSession",
-    glue = "com.automation.script.InicioSession.Feature",
+    glue = "com.automation.stepdefinitions",
     
     plugin = {
         "pretty",

@@ -1,3 +1,6 @@
-J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\script\AgregarCarrito\Feature\AgregarCarritoStep.java
+J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\runners\E2ERunner.java
+J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\runners\CarritoRunner.java
 J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\runners\TestRunner.java
-J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\script\InicioSession\Feature\InicioSessionStep.java
+J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\stepdefinitions\AgregarCarritoStep.java
+J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\runners\LoginRunner.java
+J:\Workspace\BANCOPICHINCHA\AutomationCorebank\src\test\java\com\automation\stepdefinitions\InicioSessionStep.java

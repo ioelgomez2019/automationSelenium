@@ -1,3 +1,6 @@
+com\automation\stepdefinitions\AgregarCarritoStep.class
+runners\LoginRunner.class
+runners\E2ERunner.class
+com\automation\stepdefinitions\InicioSessionStep.class
+runners\CarritoRunner.class
 runners\TestRunner.class
-com\automation\script\AgregarCarrito\Feature\AgregarCarritoStep.class
-com\automation\script\InicioSession\Feature\InicioSessionStep.class

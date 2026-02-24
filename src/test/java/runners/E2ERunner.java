@@ -20,8 +20,7 @@ import org.testng.annotations.DataProvider;
     },
     
     glue = {
-        "com.automation.script.InicioSession.Feature",
-        "com.automation.script.AgregarCarrito.Feature"
+        "com.automation.stepdefinitions"
     },
     
     plugin = {

@@ -31,8 +31,7 @@ import org.testng.annotations.DataProvider;
 
     // ── Ubicación de los Step Definitions ──
     glue = {
-        "com.automation.script.InicioSession.Feature",
-        "com.automation.script.AgregarCarrito.Feature"
+        "com.automation.stepdefinitions"
     },
 
     // ── Formato de reportes de salida ──

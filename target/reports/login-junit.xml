@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="30.208" tests="5" skipped="0" failures="0" errors="0">
+<testcase classname="Inicio de Sesión - Saucedemo" name="Inicio de sesión exitoso con standard_user" time="10.086">
+<system-out><![CDATA[
+Given que el usuario abre el navegador y accede al sistema..................passed
+When el usuario ingresa el correo "standard_user"...........................passed
+And el usuario ingresa la contraseña "secret_sauce".........................passed
+And el usuario hace clic en el botón "Ingresar".............................passed
+Then el usuario debe ver el dashboard principal.............................passed
+And el mensaje de bienvenida debe contener "Swag Labs"......................passed
+]]></system-out>
+</testcase>
+<testcase classname="Inicio de Sesión - Saucedemo" name="Inicio de sesión exitoso con performance_glitch_user" time="8.869">
+<system-out><![CDATA[
+Given que el usuario abre el navegador y accede al sistema..................passed
+When el usuario ingresa el correo "performance_glitch_user".................passed
+And el usuario ingresa la contraseña "secret_sauce".........................passed
+And el usuario hace clic en el botón "Ingresar".............................passed
+Then el usuario debe ver el dashboard principal.............................passed
+And el mensaje de bienvenida debe contener "Swag Labs"......................passed
+]]></system-out>
+</testcase>
+<testcase classname="Inicio de Sesión - Saucedemo" name="Inicio de sesión fallido con locked_out_user" time="3.408">
+<system-out><![CDATA[
+Given que el usuario abre el navegador y accede al sistema..................passed
+When el usuario ingresa el correo "locked_out_user".........................passed
+And el usuario ingresa la contraseña "secret_sauce".........................passed
+And el usuario hace clic en el botón "Ingresar".............................passed
+Then el sistema debe mostrar el mensaje de error "locked out"...............passed
+]]></system-out>
+</testcase>
+<testcase classname="Inicio de Sesión - Saucedemo" name="Inicio de sesión fallido con credenciales incorrectas" time="4.059">
+<system-out><![CDATA[
+Given que el usuario abre el navegador y accede al sistema..................passed
+When el usuario ingresa el correo "usuario_invalido"........................passed
+And el usuario ingresa la contraseña "password_incorrecta"..................passed
+And el usuario hace clic en el botón "Ingresar".............................passed
+Then el sistema debe mostrar el mensaje de error "do not match".............passed
+]]></system-out>
+</testcase>
+<testcase classname="Inicio de Sesión - Saucedemo" name="Inicio de sesión con campo de usuario vacío" time="3.078">
+<system-out><![CDATA[
+Given que el usuario abre el navegador y accede al sistema..................passed
+When el usuario no ingresa ningún dato......................................passed
+And el usuario hace clic en el botón "Ingresar".............................passed
+Then el sistema debe mostrar el mensaje de error "Username is required".....passed
+]]></system-out>
+</testcase>
+</testsuite>

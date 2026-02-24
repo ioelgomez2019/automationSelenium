@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
  */
 @CucumberOptions(
     features = "Scenarios/agregarCarrito",
-    glue = "com.automation.script.AgregarCarrito.Feature",
+    glue = "com.automation.stepdefinitions",
     
     plugin = {
         "pretty",
