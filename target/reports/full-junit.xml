@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="7.089" tests="3" skipped="0" failures="0" errors="0">
+<testcase classname="Agregar Producto al Carrito" name="Agregar un producto al carrito correctamente - Example #1.1" time="3.205">
+<system-out><![CDATA[
+Given que el usuario abre el navegador y accede al sistema..................passed
+When el usuario ingresa el correo "standard_user"...........................passed
+And el usuario ingresa la contrasena "secret_sauce".........................passed
+And el usuario hace clic en el boton ingresar...............................passed
+And el usuario selecciona el producto "Sauce Labs Backpack".................passed
+And el usuario hace clic en agregar al carrito..............................passed
+Then el carrito debe mostrar 1 producto.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Inicio de Sesion - Saucedemo" name="Inicio de sesion exitoso - Example #1.1" time="1.86">
+<system-out><![CDATA[
+Given que el usuario abre el navegador y accede al sistema..................passed
+When el usuario ingresa el correo "standard_user"...........................passed
+And el usuario ingresa la contrasena "secret_sauce".........................passed
+And el usuario hace clic en el boton ingresar...............................passed
+Then el usuario debe ver el dashboard principal.............................passed
+And el mensaje de bienvenida debe contener "Swag Labs"......................passed
+]]></system-out>
+</testcase>
+<testcase classname="Inicio de Sesion - Saucedemo" name="Inicio de sesion fallido - Example #1.1" time="1.892">
+<system-out><![CDATA[
+Given que el usuario abre el navegador y accede al sistema..................passed
+When el usuario ingresa el correo "fall"....................................passed
+And el usuario ingresa la contrasena "secret_sauce".........................passed
+And el usuario hace clic en el boton ingresar...............................passed
+Then el sistema debe mostrar el mensaje de error "do not match".............passed
+]]></system-out>
+</testcase>
+</testsuite>

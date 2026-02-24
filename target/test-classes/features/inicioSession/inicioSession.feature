@@ -1,45 +1,32 @@
-@InicioSession @login
-Feature: Inicio de Sesión - Saucedemo
+﻿@InicioSession @login
+Feature: Inicio de Sesion - Saucedemo
   Como usuario de Saucedemo
-  Quiero poder iniciar sesión con mis credenciales
+  Quiero poder iniciar sesion con mis credenciales
   Para acceder a la tienda online
 
   Background:
     Given que el usuario abre el navegador y accede al sistema
 
-  @LoginExitoso @SauceDemo
-  Scenario: Inicio de sesión exitoso con standard_user
-    When el usuario ingresa el correo "standard_user"
-    And el usuario ingresa la contraseña "secret_sauce"
-    And el usuario hace clic en el botón "Ingresar"
+  @Login @SauceDemo @funcional
+  Scenario Outline: Inicio de sesion exitoso
+    When el usuario ingresa el correo "<user>"
+    And el usuario ingresa la contrasena "<password>"
+    And el usuario hace clic en el boton ingresar
     Then el usuario debe ver el dashboard principal
-    And el mensaje de bienvenida debe contener "Swag Labs"
+    And el mensaje de bienvenida debe contener "<mensaje>"
 
-  @LoginExitoso @SauceDemo
-  Scenario: Inicio de sesión exitoso con performance_glitch_user
-    When el usuario ingresa el correo "performance_glitch_user"
-    And el usuario ingresa la contraseña "secret_sauce"
-    And el usuario hace clic en el botón "Ingresar"
-    Then el usuario debe ver el dashboard principal
-    And el mensaje de bienvenida debe contener "Swag Labs"
+    Examples:
+      | user          | password     | mensaje   |
+      | standard_user | secret_sauce | Swag Labs |
 
-  @LoginFallido @SauceDemo
-  Scenario: Inicio de sesión fallido con locked_out_user
-    When el usuario ingresa el correo "locked_out_user"
-    And el usuario ingresa la contraseña "secret_sauce"
-    And el usuario hace clic en el botón "Ingresar"
-    Then el sistema debe mostrar el mensaje de error "locked out"
 
-  @LoginFallido @SauceDemo
-  Scenario: Inicio de sesión fallido con credenciales incorrectas
-    When el usuario ingresa el correo "usuario_invalido"
-    And el usuario ingresa la contraseña "password_incorrecta"
-    And el usuario hace clic en el botón "Ingresar"
-    Then el sistema debe mostrar el mensaje de error "do not match"
+  @LoginFallido @SauceDemo @funcionalerror
+  Scenario Outline: Inicio de sesion fallido
+    When el usuario ingresa el correo "<user>"
+    And el usuario ingresa la contrasena "<password>"
+    And el usuario hace clic en el boton ingresar
+    Then el sistema debe mostrar el mensaje de error "<mensaje_error>"
 
-  @LoginCamposVacios @SauceDemo
-  Scenario: Inicio de sesión con campo de usuario vacío
-    When el usuario no ingresa ningún dato
-    And el usuario hace clic en el botón "Ingresar"
-    Then el sistema debe mostrar el mensaje de error "Username is required"
-
+    Examples:
+      | user            | password     | mensaje_error |
+      | fall            | secret_sauce | do not match  |

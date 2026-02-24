@@ -122,8 +122,8 @@
                         <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
                     </systemPropertyVariables>
                     <!-- Propiedades de paralelización -->
-                    <parallel>false</parallel>
-                    <threadCount>1</threadCount>
+                    <parallel>methods</parallel>
+                    <threadCount>3</threadCount>
                 </configuration>
             </plugin>
 

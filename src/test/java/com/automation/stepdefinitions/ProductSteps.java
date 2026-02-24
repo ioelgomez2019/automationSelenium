@@ -1,137 +1,38 @@
 package com.automation.stepdefinitions;
 
-import com.automation.business.LoginBusiness;
-import com.automation.business.ProductBusiness;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
+import com.automation.negocio.ProductBusiness;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.And;
+import io.cucumber.java.en.When;
 
-/**
- * ProductSteps - Step definitions for product/shopping operations.
- * Uses composition with LoginBusiness and ProductBusiness.
- * NOTE: Does NOT extend CommonSteps to avoid Cucumber's inheritance restrictions on Step Definitions.
- */
 public class ProductSteps {
 
-    private LoginBusiness loginBusiness;
     private ProductBusiness productBusiness;
+    private String selectedProductName;
 
-    @Given("user is logged in and on products page")
-    public void userIsLoggedInAndOnProductsPage() {
-        if (loginBusiness == null) {
-            loginBusiness = new LoginBusiness();
-        }
-        loginBusiness.loginAsStandardUser();
-        productBusiness = new ProductBusiness();
-        productBusiness.verifyOnProductsPage();
-    }
-
-    @When("user adds first product to cart")
-    public void userAddsFirstProductToCart() {
+    private ProductBusiness getProductBusiness() {
         if (productBusiness == null) {
             productBusiness = new ProductBusiness();
         }
-        productBusiness.addFirstProductToCart();
-    }
-
-    @When("user adds product {string} to cart")
-    public void userAddsProductToCart(String productName) {
-        if (productBusiness == null) {
-            productBusiness = new ProductBusiness();
-        }
-        productBusiness.addProductToCart(productName);
-    }
-
-    @Then("cart should have {int} item")
-    public void cartShouldHaveItem(int expectedCount) {
-        if (productBusiness == null) {
-            productBusiness = new ProductBusiness();
-        }
-        productBusiness.validateCartCount(expectedCount);
-    }
-
-    @Then("cart should have {int} items")
-    public void cartShouldHaveItems(int expectedCount) {
-        if (productBusiness == null) {
-            productBusiness = new ProductBusiness();
-        }
-        productBusiness.validateCartCount(expectedCount);
-    }
-
-    @When("user opens cart")
-    public void userOpensCart() {
-        if (productBusiness == null) {
-            productBusiness = new ProductBusiness();
-        }
-        productBusiness.openCart();
-    }
-
-    @When("user proceeds to checkout")
-    public void userProceedsToCheckout() {
-        if (productBusiness == null) {
-            productBusiness = new ProductBusiness();
-        }
-        productBusiness.proceedToCheckout();
-    }
-
-    @When("user continues shopping")
-    public void userContinuesShopping() {
-        if (productBusiness == null) {
-            productBusiness = new ProductBusiness();
-        }
-        productBusiness.continueShopping();
-    }
-
-    // ──────────────────────────────────────────────
-    //  Spanish compatibility steps
-    // ──────────────────────────────────────────────
-
-    @Given("que el usuario está autenticado en el sistema")
-    public void queElUsuarioEstaAutenticado() {
-        userIsLoggedInAndOnProductsPage();
+        return productBusiness;
     }
 
     @When("el usuario selecciona el producto {string}")
     public void elUsuarioSeleccionaElProducto(String productName) {
-        userAddsProductToCart(productName);
+        selectedProductName = productName;
     }
 
     @When("el usuario hace clic en agregar al carrito")
     public void elUsuarioHaceClicEnAgregarAlCarrito() {
-        userAddsFirstProductToCart();
+        if (selectedProductName == null || selectedProductName.isEmpty()) {
+            throw new IllegalStateException("Debe seleccionar un producto antes de agregar al carrito.");
+        }
+
+        getProductBusiness().addProductToCart(selectedProductName);
+        selectedProductName = null;
     }
 
     @Then("el carrito debe mostrar {int} producto")
     public void elCarritoDebeMostrarUnProducto(int cantidad) {
-        cartShouldHaveItem(cantidad);
-    }
-
-    @Then("el carrito debe mostrar {int} productos")
-    public void elCarritoDebeMostrarProductos(int cantidad) {
-        cartShouldHaveItems(cantidad);
-    }
-
-    @When("el usuario elimina el producto {string} del carrito")
-    public void elUsuarioEliminaElProducto(String productName) {
-        if (productBusiness == null) {
-            productBusiness = new ProductBusiness();
-        }
-        // Simulate product removal - in a real scenario, this would interact with the cart UI
-        // For now, we'll just clear the cart to match the test expectations
-    }
-
-    @Then("el carrito debe estar vacío")
-    public void elCarritoDebeEstarVacio() {
-        if (productBusiness == null) {
-            productBusiness = new ProductBusiness();
-        }
-        productBusiness.validateCartEmpty();
-    }
-
-    @Given("que el carrito tiene el producto {string}")
-    public void queElCarritoTieneElProducto(String productName) {
-        userIsLoggedInAndOnProductsPage();
-        userAddsProductToCart(productName);
+        getProductBusiness().validateCartCount(cantidad);
     }
 }

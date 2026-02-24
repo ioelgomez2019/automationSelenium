@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="0.216" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Agregar Producto al Carrito" name="Agregar un producto al carrito correctamente - Example #1.1" time="0.014">
+<system-out><![CDATA[
+Given que el usuario abre el navegador y accede al sistema..................passed
+When el usuario ingresa el correo "standard_user"...........................passed
+And el usuario ingresa la contrasena "secret_sauce".........................passed
+And el usuario hace clic en el boton ingresar...............................passed
+And el usuario selecciona el producto "Sauce Labs Backpack".................passed
+And el usuario hace clic en agregar al carrito..............................passed
+Then el carrito debe mostrar 1 producto.....................................passed
+]]></system-out>
+</testcase>
+</testsuite>

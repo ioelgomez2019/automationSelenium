@@ -12,7 +12,7 @@ import org.testng.annotations.DataProvider;
  */
 @CucumberOptions(
     features = {"Scenarios"},
-    glue = {"com.automation.stepdefinitions"},
+    glue = {"com.automation.stepdefinitions", "com.automation.hooks"},
     plugin = {
         "pretty",
         "html:target/reports/full-report.html",

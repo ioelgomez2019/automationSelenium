@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
  */
 @CucumberOptions(
     features = "Scenarios/agregarCarrito",
-    glue = {"com.automation.stepdefinitions"},
+    glue = {"com.automation.stepdefinitions", "com.automation.hooks"},
     plugin = {
         "pretty",
         "html:target/reports/product-report.html",
