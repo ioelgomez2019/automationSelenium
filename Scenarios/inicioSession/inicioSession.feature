@@ -29,4 +29,5 @@ Feature: Inicio de Sesion - Saucedemo
 
     Examples:
       | user            | password     | mensaje_error |
-      | fall            | secret_sauce | do not match  error  |
+      | fall            | secret_sauce | Username and password do not match any user in this service  |
+  #Epic sadface: Username and password do not match any user in this service

@@ -6,18 +6,19 @@ Feature: Agregar Producto al Carrito
 
   Background:
     Given que el usuario abre el navegador y accede al sistema
+    When el usuario ingresa el correo "standard_user"
+    And el usuario ingresa la contrasena "secret_sauce"
+    And el usuario hace clic en el boton ingresar
 
   @agregarCarrito @Order1
-  Scenario Outline: Agregar un producto al carrito correctamente
-    # Fresh login - carrito must be empty at start
-    When el usuario ingresa el correo "<user>"
-    And el usuario ingresa la contrasena "<password>"
-    And el usuario hace clic en el boton ingresar
-    And el usuario selecciona el producto "<producto>"
-    And el usuario hace clic en agregar al carrito
-    Then el carrito debe mostrar 1 producto
+  Scenario Outline: Agregar lista de productos al carrito
+    And el usuario agrega la lista de productos "<productos>"
+    Then el carrito debe mostrar <cantidad> productos
 
     Examples:
-      | user          | password     | producto   |
-      | standard_user | secret_sauce | Sauce Labs Backpack |
+      | productos                                                          | cantidad |
+      #| standard_user | secret_sauce | Sauce Labs Backpack                                                                                                        | 1        |
+      | Sauce Labs Backpack;Sauce Labs Bike Light;Sauce Labs Bolt T-Shirt  | 3        |
+      #| standard_user | secret_sauce | Sauce Labs Backpack;Sauce Labs Bike Light;Sauce Labs Bolt T-Shirt;Sauce Labs Fleece Jacket                               | 4        |
+      #| standard_user | secret_sauce | Sauce Labs Backpack;Sauce Labs Bike Light;Sauce Labs Bolt T-Shirt;Sauce Labs Fleece Jacket;Sauce Labs Onesie            | 5        |
 
