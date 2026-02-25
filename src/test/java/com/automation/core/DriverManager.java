@@ -3,7 +3,11 @@ package com.automation.core;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * DriverManager - ThreadLocal WebDriver management for thread-safe execution.
@@ -19,7 +23,7 @@ public class DriverManager {
     public static void startDriver() {
         if (DRIVER.get() == null) {
             WebDriverManager.chromedriver().setup();
-            WebDriver driver = new ChromeDriver();
+            WebDriver driver = buildChromeDriver();
             driver.manage().window().maximize();
             DRIVER.set(driver);
         }
@@ -35,10 +39,24 @@ public class DriverManager {
                 DRIVER.set(new FirefoxDriver());
             } else {
                 WebDriverManager.chromedriver().setup();
-                DRIVER.set(new ChromeDriver());
+                DRIVER.set(buildChromeDriver());
             }
             DRIVER.get().manage().window().maximize();
         }
+    }
+
+    private static WebDriver buildChromeDriver() {
+        ChromeOptions options = new ChromeOptions();
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        prefs.put("profile.password_manager_leak_detection", false);
+        prefs.put("autofill.profile_enabled", false);
+        prefs.put("autofill.credit_card_enabled", false);
+        options.setExperimentalOption("prefs", prefs);
+        options.addArguments("--disable-notifications");
+
+        return new ChromeDriver(options);
     }
 
     /**
