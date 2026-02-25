@@ -1,6 +1,6 @@
-package com.automation.stepdefinitions;
+package com.automation.features.product;
 
-import com.automation.negocio.ProductBusiness;
+import com.automation.features.product.ProductBusiness;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -31,8 +31,34 @@ public class ProductSteps {
         selectedProductName = null;
     }
 
+    @When("el usuario agrega la lista de productos {string}")
+    public void elUsuarioAgregaLaListaDeProductos(String productos) {
+        if (productos == null || productos.trim().isEmpty()) {
+            throw new IllegalArgumentException("La lista de productos no puede estar vacia.");
+        }
+
+        String[] lista = productos.split(";");
+        int agregados = 0;
+        for (String producto : lista) {
+            String nombre = producto.trim();
+            if (!nombre.isEmpty()) {
+                getProductBusiness().addProductToCart(nombre);
+                agregados++;
+            }
+        }
+
+        if (agregados == 0) {
+            throw new IllegalArgumentException("No se encontraron productos validos en la lista: " + productos);
+        }
+    }
+
     @Then("el carrito debe mostrar {int} producto")
     public void elCarritoDebeMostrarUnProducto(int cantidad) {
+        getProductBusiness().validateCartCount(cantidad);
+    }
+
+    @Then("el carrito debe mostrar {int} productos")
+    public void elCarritoDebeMostrarProductos(int cantidad) {
         getProductBusiness().validateCartCount(cantidad);
     }
 }

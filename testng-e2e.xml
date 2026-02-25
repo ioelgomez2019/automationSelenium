@@ -3,7 +3,7 @@
 <suite name="E2E Suite - Pruebas End-to-End" verbose="1">
     <test name="Flujo Completo E2E">
         <classes>
-            <class name="runners.E2ERunner"/>
+            <class name="com.automation.runners.E2ERunner"/>
         </classes>
     </test>
 </suite>

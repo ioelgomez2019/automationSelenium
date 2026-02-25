@@ -1,4 +1,4 @@
-package com.automation.pages;
+package com.automation.features.product;
 
 import com.automation.core.BasePage;
 import org.openqa.selenium.By;

@@ -1,6 +1,6 @@
 @echo off
 REM ============================================
-REM Script de Ejecución de Pruebas BDD - TestNG
+REM Script de EjecuciÃ³n de Pruebas BDD - TestNG
 REM Automation Corebank - Banco Pichincha
 REM ============================================
 
@@ -11,9 +11,9 @@ echo ============================================
 echo.
 echo Seleccione el tipo de prueba a ejecutar:
 echo.
-echo 1. TODAS LAS PRUEBAS (TestRunner)
+echo 1. TODAS LAS PRUEBAS (E2ERunner)
 echo 2. SOLO LOGIN (@login - LoginRunner)
-echo 3. SOLO CARRITO (CarritoRunner)
+echo 3. SOLO CARRITO (ProductRunner)
 echo 4. FLUJO E2E - End to End (E2ERunner)
 echo 5. EJECUTAR POR TAG PERSONALIZADO
 echo 6. SALIR
@@ -56,7 +56,7 @@ echo ============================================
 echo   Ejecutando pruebas de CARRITO...
 echo ============================================
 echo.
-call mvn clean test -Dtest=CarritoRunner
+call mvn clean test -Dtest=ProductRunner
 goto fin
 
 :e2e

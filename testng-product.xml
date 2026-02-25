@@ -3,7 +3,7 @@
 <suite name="ProductTest" parallel="false" thread-count="1">
     <test name="Product Tests">
         <classes>
-            <class name="runners.ProductRunner"/>
+            <class name="com.automation.runners.ProductRunner"/>
         </classes>
     </test>
 </suite>

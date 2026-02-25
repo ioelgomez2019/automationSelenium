@@ -1,4 +1,4 @@
-package runners;
+package com.automation.runners;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
@@ -11,15 +11,15 @@ import org.testng.annotations.DataProvider;
  *        ejecutar-pruebas.bat e2e
  */
 @CucumberOptions(
-    features = {"Scenarios/inicioSession", "Scenarios/agregarCarrito"},
-    glue = {"com.automation.stepdefinitions", "com.automation.hooks"},
+    features = {"Scenarios/inicioSession", "Scenarios/agregarCarrito", "Scenarios/pasarelaPagos"},
+    glue = {"com.automation.features"},
     plugin = {
         "pretty",
         "html:target/reports/e2e-report.html",
         "json:target/reports/e2e-report.json",
         "junit:target/reports/e2e-junit.xml"
     },
-    tags = "@login or @AgregarCarrito",
+    tags = "@login or @AgregarCarrito or @PasarelaPagos",
     monochrome = true,
     dryRun = false,
     publish = false
