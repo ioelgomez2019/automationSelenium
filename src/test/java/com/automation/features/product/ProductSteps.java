@@ -1,6 +1,6 @@
-package com.automation.stepdefinitions;
+package com.automation.features.product;
 
-import com.automation.negocio.ProductBusiness;
+import com.automation.features.product.ProductBusiness;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 

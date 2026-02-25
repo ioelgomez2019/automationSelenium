@@ -3,7 +3,7 @@
 <suite name="Automation Corebank - Suite Completo" verbose="1">
     <test name="Todas las Pruebas">
         <classes>
-            <class name="runners.TestRunner"/>
+            <class name="com.automation.runners.E2ERunner"/>
         </classes>
     </test>
 </suite>

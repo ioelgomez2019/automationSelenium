@@ -122,8 +122,12 @@
                         <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
                     </systemPropertyVariables>
                     <!-- Propiedades de paralelización -->
-                    <parallel>methods</parallel>
-                    <threadCount>3</threadCount>
+<!--                    <parallel>methods</parallel>-->
+                    <parallel>none</parallel>
+                    <threadCount>1</threadCount>
+                    <!-- Debug-friendly: run tests in same JVM -->
+                    <forkCount>0</forkCount>
+                    <reuseForks>false</reuseForks>
                 </configuration>
             </plugin>
 

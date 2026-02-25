@@ -1,7 +1,7 @@
-package com.automation.negocio;
+package com.automation.features.login;
 
 import com.automation.config.ConfigManager;
-import com.automation.pages.LoginPage;
+import com.automation.features.login.LoginPage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 

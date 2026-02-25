@@ -16,9 +16,5 @@ Feature: Agregar Producto al Carrito
     Then el carrito debe mostrar <cantidad> productos
 
     Examples:
-      | productos                                                          | cantidad |
-      #| standard_user | secret_sauce | Sauce Labs Backpack                                                                                                        | 1        |
+      | productos                                                         | cantidad |
       | Sauce Labs Backpack;Sauce Labs Bike Light;Sauce Labs Bolt T-Shirt  | 3        |
-      #| standard_user | secret_sauce | Sauce Labs Backpack;Sauce Labs Bike Light;Sauce Labs Bolt T-Shirt;Sauce Labs Fleece Jacket                               | 4        |
-      #| standard_user | secret_sauce | Sauce Labs Backpack;Sauce Labs Bike Light;Sauce Labs Bolt T-Shirt;Sauce Labs Fleece Jacket;Sauce Labs Onesie            | 5        |
-

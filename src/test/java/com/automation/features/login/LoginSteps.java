@@ -1,6 +1,11 @@
-package com.automation.stepdefinitions;
+package com.automation.features.login;
 
-import com.automation.negocio.LoginBusiness;
+import com.automation.features.login.LoginBusiness;
+import com.automation.core.DriverManager;
+import com.automation.core.ScreenshotUtil;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,6 +15,29 @@ import org.testng.Assert;
 
 public class LoginSteps {
     private LoginBusiness loginBusiness;
+
+    @Before
+    public void setup(Scenario scenario) {
+        System.out.println("\nScenario: " + scenario.getName());
+        System.out.println("Tags: " + scenario.getSourceTagNames());
+        DriverManager.iniciarDriver();
+    }
+
+    @After
+    public void teardown(Scenario scenario) {
+        if (scenario.isFailed()) {
+            byte[] screenshot = ScreenshotUtil.capturarPantallaBytes();
+            if (screenshot != null) {
+                scenario.attach(screenshot, "image/png", "Failure Screenshot");
+            }
+        }
+
+        try {
+            DriverManager.cerrarDriver();
+        } catch (Exception e) {
+            System.out.println("Warning closing driver: " + e.getMessage());
+        }
+    }
 
     private LoginBusiness getLoginBusiness() {
         if (loginBusiness == null) {

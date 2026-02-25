@@ -3,7 +3,7 @@
 <suite name="Carrito Suite - Pruebas del Carrito de Compras" verbose="1">
     <test name="Pruebas de Carrito">
         <classes>
-            <class name="runners.CarritoRunner"/>
+            <class name="com.automation.runners.ProductRunner"/>
         </classes>
     </test>
 </suite>

@@ -1,6 +1,6 @@
-package com.automation.negocio;
+package com.automation.features.product;
 
-import com.automation.pages.ProductsPage;
+import com.automation.features.product.ProductsPage;
 import org.testng.Assert;
 
 public class ProductBusiness {
