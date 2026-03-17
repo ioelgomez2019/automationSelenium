@@ -86,19 +86,27 @@ pipeline {
         }
     }
 
-    post {
-        failure {
-            mail to:      'tu-correo@gmail.com',
-                 subject:  "FALLO: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body:     """El pipeline falló.
+post {
+    failure {
+        mail to:      'tu-correo@gmail.com',
+             subject:  "❌ FALLO: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+             body:     """El pipeline falló.
 Job:   ${env.JOB_NAME}
 Build: ${env.BUILD_NUMBER}
 URL:   ${env.BUILD_URL}"""
-        }
-        always {
-            junit allowEmptyResults: true,
-                  testResults: 'target/reports/*-junit.xml'
-            cleanWs()
-        }
     }
+    success {
+        mail to:      'tu-correo@gmail.com',
+             subject:  "✅ ÉXITO: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+             body:     """El pipeline se ejecutó correctamente.
+Job:   ${env.JOB_NAME}
+Build: ${env.BUILD_NUMBER}
+URL:   ${env.BUILD_URL}"""
+    }
+    always {
+        junit allowEmptyResults: true,
+              testResults: 'target/reports/*-junit.xml'
+        cleanWs()
+    }
+}
 }
