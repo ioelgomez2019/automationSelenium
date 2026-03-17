@@ -88,7 +88,7 @@ pipeline {
 
 post {
     failure {
-        mail to:      'tu-correo@gmail.com',
+        mail to:      'joel.gomez@soltechsac.com'
              subject:  "❌ FALLO: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
              body:     """El pipeline falló.
 Job:   ${env.JOB_NAME}
@@ -96,7 +96,7 @@ Build: ${env.BUILD_NUMBER}
 URL:   ${env.BUILD_URL}"""
     }
     success {
-        mail to:      'tu-correo@gmail.com',
+        mail to:      'joel.gomez@soltechsac.com',
              subject:  "✅ ÉXITO: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
              body:     """El pipeline se ejecutó correctamente.
 Job:   ${env.JOB_NAME}
